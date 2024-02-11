@@ -6,6 +6,7 @@ import styles from './styles.module.css';
 export default function App() {
   const ref = useRef<ReturnType<typeof setTimeout>[]>([]);
   const [items, setItems] = useState<string[]>([]);
+
   const transitions = useTransition(items, {
     from: {
       opacity: 0,
@@ -27,9 +28,9 @@ export default function App() {
     ref.current.forEach(clearTimeout);
     ref.current = [];
     setItems([]);
-    ref.current.push(setTimeout(() => setItems(['Happy', 'New', 'Year']), 2000));
+    ref.current.push(setTimeout(() => setItems(['Happy', 'New', 'Year']), 0));
     ref.current.push(setTimeout(() => setItems(['2024']), 5000));
-    ref.current.push(setTimeout(() => setItems(['Success', 'Health', 'Happiness']), 8000));
+    ref.current.push(setTimeout(() => setItems(['Health', 'Success', 'Happiness']), 8000));
   }, []);
 
   useEffect(() => {
